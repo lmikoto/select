@@ -160,6 +160,9 @@ function App() {
             )
           })
         }
+        {
+          isEmpty(data) && <h1 style={{ marginLeft: 'auto',marginRight: 'auto' }}>点击左上角的新建按钮新建项目</h1>
+        }
         <Modal
           visible={modelVisiable}
           onCancel={cancel}
