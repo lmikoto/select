@@ -5,6 +5,8 @@ import { isEmpty } from 'lodash';
  
 import './App.css';
 
+const { confirm } = Modal;
+
 const layout = {
   labelCol: { span: 4 },
   wrapperCol: { span: 20 },
@@ -99,6 +101,18 @@ function App() {
     message.success("删除成功")
   }
 
+  const handleDelete = (k) => {
+    confirm({
+      title: '确认删除吗',
+      onOk() {
+        deleteData(k)
+      },
+      onCancel() {
+        console.log('Cancel');
+      },
+    });
+  }
+
 
   const random = (index) => {
     const d = data[index].item;
@@ -135,7 +149,7 @@ function App() {
               actions={[
                 <SmileOutlined onClick={() => random(k)} />,
                 <EditOutlined onClick={() => handleEdit(k)}/>,
-                <DeleteOutlined onClick={() => deleteData(k)} />,
+                <DeleteOutlined onClick={() => handleDelete(k)} />,
               ]}
               >
               <p>{display1}</p>
